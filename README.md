@@ -24,3 +24,5 @@ Dan: Finding a way for Dropzonejs to do PDF previews 2014-03-09
 Dan: https://github.com/enyo/dropzone/issues/415 2014-03-09
 Dan: render PDF on server then send back
 
+Dan: Thoughts on UI: GIF demo of drag n drop
+Dan: Thoughts on UI: Make the customer facing menu UI first, the implement Drag n Drop on that 2014-03-09
