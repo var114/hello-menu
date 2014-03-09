@@ -1,2 +1,20 @@
 body {
-  font-size: 32px; }
+  font-family: helvetica;
+  font-size: 24px; }
+
+h1 {
+  text-align: center; }
+
+.dropzone {
+  display: inline-block;
+  border: 5px dashed grey;
+  padding: 1em;
+  margin: 1em 0.5em; }
+  .dropzone:hover {
+    cursor: pointer; }
+
+.dz-message {
+  text-align: center; }
+
+.location {
+  font-weight: 800; }

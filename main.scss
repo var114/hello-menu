@@ -1,3 +1,29 @@
+$blue:      #2455c3;
+$gray: gray;
+
 body {
-  font-size: 32px;
+  font-family: helvetica;
+  font-size: 24px;
+}
+h1 {
+  text-align: center;
+  }
+.dropzone {
+  // color: white;
+  // background: $blue;
+  display: inline-block;
+  border: 5px dashed $gray;
+  // border-radius: 0.8em;
+  // box-shadow: 2px 2px 0 0 #555;
+  padding: 1em;
+  margin: 1em 0.5em;
+  &:hover {
+    cursor: pointer; //Hand cusor when hovering
+  }
+}
+.dz-message { 
+  text-align: center;
+}
+.location {
+  font-weight: 800;
 }

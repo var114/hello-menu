@@ -1,0 +1,8 @@
+mixin makeDropzone(location, name)
+  form(id=name, action='/', method="POST", enctype="multipart/form-data" class="square dropzone")
+      .dz-message
+        div.location=location
+        div.name=name
+      .fallback
+        input(type="file", name=name)
+        input(type="submit")

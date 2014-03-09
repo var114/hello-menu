@@ -1,7 +1,26 @@
+include _dropzone
+
 extends layout
 
 block content
-  h1 Hospitality PDF Pro 2014 Enterprise Edition ©
-  form(action='/', method="POST", enctype="multipart/form-data")
-    input(type="file", name="menu")
-    input(type="submit")
+  h1 Drag A PDF
+  
+  p [GIF demonstration of process]
+
+  //- h2 Gaslamp Quarter
+  +makeDropzone("Gaslamp", "Brunch")
+  +makeDropzone("Gaslamp", "Dinner")
+  +makeDropzone("Gaslamp", "Happy Hour")
+  +makeDropzone("Gaslamp", "Special")
+  +makeDropzone("Adams", "Brunch")
+  +makeDropzone("Adams", "Dinner")
+  +makeDropzone("Adams", "Happy Hour")
+  +makeDropzone("Adams", "Special")
+  //- make
+
+  //- h2 University Heights
+  
+
+block script
+  script(type="text/javascript").
+    var dropzone = new Dropzone("#gaslampBreakfast");
