@@ -1,3 +1,9 @@
-# DAN LIU FTW
+# Restaurant PDF Uploader 
 
-FTW = 'far too wrinkled'
+Authors: Patil Varvarian & Dan Liu
+
+## Dev Journal
+
+Dan: Finding a way for Dropzonejs to do PDF previews 2014-03-09
+
+
