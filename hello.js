@@ -23,7 +23,7 @@ app.post('/upload', function (request, response){
 });
 
 */
-
+app.use(express.static(__dirname + '/public')); //server css, javascript from public folder
 app.use(express.bodyParser());
 
 app.get('/', function (req, res) {
