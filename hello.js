@@ -5,7 +5,7 @@
 // var path = require('path'); 
 // var mime = require('mime');
 var express = require('express');
-
+var jade = require('jade');
 var cache = {}
 
 var app = express();
@@ -27,9 +27,9 @@ app.post('/upload', function (request, response){
 app.use(express.bodyParser());
 
 app.get('/', function (req, res) {
-  var filepath = (__dirname + '/public/index.html');
+  var filePath = (__dirname + '/template/index.jade');
     console.log('received GET request');
-    res.sendfile(filepath);
+    res.send(jade.renderFile(filePath));
     /* console.log(req) */
 }); 
 
