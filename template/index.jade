@@ -9,13 +9,13 @@ block content
 
   //- h2 Gaslamp Quarter
   +makeDropzone("Gaslamp", "Brunch")
-  +makeDropzone("Gaslamp", "Dinner")
-  +makeDropzone("Gaslamp", "Happy Hour")
-  +makeDropzone("Gaslamp", "Special")
-  +makeDropzone("Adams", "Brunch")
-  +makeDropzone("Adams", "Dinner")
-  +makeDropzone("Adams", "Happy Hour")
-  +makeDropzone("Adams", "Special")
+  //- +makeDropzone("Gaslamp", "Dinner")
+  //- +makeDropzone("Gaslamp", "Happy Hour")
+  //- +makeDropzone("Gaslamp", "Special")
+  //- +makeDropzone("Adams", "Brunch")
+  //- +makeDropzone("Adams", "Dinner")
+  //- +makeDropzone("Adams", "Happy Hour")
+  //- +makeDropzone("Adams", "Special")
   //- make
 
   //- h2 University Heights
@@ -25,9 +25,18 @@ block script
   // script(type="text/javascript").
     //- var dropzone = new Dropzone("#gaslampBreakfast");
   script(type="text/javascript").
+    var socket = io.connect('/');
+    socket.on('success', function (data) {
+      console.log(data);
+      })
+
     $(".data-title").click(function () {
         console.log("clicked");
       });
     $(".data-title").blur(function() {
-        console.log($(".data-title").text());
-      })
+        var newData = $(".data-title").text();
+        console.log("edited " + newData);
+        socket.emit('edit', {'title': newData});
+
+      });
+ 
