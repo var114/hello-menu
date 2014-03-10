@@ -1,5 +1,10 @@
-var express = require('express');
 var jade = require('jade');
+var socket = require('socket.io');
+var express = require('express');
+
+var app = express()
+  , server = require('http').createServer(app)
+  , io = require('socket.io').listen(server);
 
 var yaml = require('js-yaml');
 var fs = require('fs'); //file system access
@@ -10,8 +15,6 @@ try {
 } catch (e) {
   console.log(e);
 }
-
-var app = express();
 
 app.set("views", __dirname + "/template");
 app.set("view engine", "jade");
