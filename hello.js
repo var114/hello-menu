@@ -41,11 +41,14 @@ io.sockets.on('connection', function (socket) {
 //     fs.writeFile(newPath, data, function (err) {
 //       res.redirect("back");
 //     });
-        
 
-server.listen(3000, function() { /* starts the server, port 3000. Can eventually change server to your own!!! */
-  console.log("Server listening on port 3000.");
-});
+exports.listen = function (port) {
+  server.listen(3000, function () { console.log("Server listeing on port 3000")})
+};
+
+// server.listen(3000, function() {  starts the server, port 3000. Can eventually change server to your own!!! 
+//   console.log("Server listening on port 3000.");
+// });
 
 
 
