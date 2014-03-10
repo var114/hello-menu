@@ -1,6 +1,15 @@
 var express = require('express');
 var jade = require('jade');
 
+var yaml = require('js-yaml');
+var fs = require('fs'); //file system access
+
+try {
+  var data = yaml.safeLoad(fs.readFileSync('./data/data.yml', 'utf8'));
+  console.log(data);
+} catch (e) {
+  console.log(e);
+}
 
 var app = express();
 
@@ -8,7 +17,7 @@ app.set("views", __dirname + "/template");
 app.set("view engine", "jade");
 
 app.get('/', function (req, res) {
-  res.render("index");
+  res.render("index", data);
 }); 
 
 app.use(express.bodyParser());
