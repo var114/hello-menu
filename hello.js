@@ -1,28 +1,8 @@
-
-
-// var http = require('http');
-// var fs = require('fs');
-// var path = require('path'); 
-// var mime = require('mime');
 var express = require('express');
 var jade = require('jade');
-var cache = {}
+
 
 var app = express();
-
-
-/*
-
-app.get('/upload', function (request, response) {
-  console.log('received GET request');
-  response.send('<form method="POST"><input type="submit"></form>');
-});
-app.post('/upload', function (request, response){
-  console.log('received POST request');
-  response.send('hey we got your request!');
-});
-
-*/
 app.use(express.static(__dirname + '/public')); //server css, javascript from public folder
 app.use(express.bodyParser());
 
@@ -30,7 +10,6 @@ app.get('/', function (req, res) {
   var filePath = (__dirname + '/template/index.jade');
     console.log('received GET request');
     res.send(jade.renderFile(filePath));
-    /* console.log(req) */
 }); 
 
   app.post('/', function (req, res) {
