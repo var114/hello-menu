@@ -30,3 +30,4 @@ Dan: Thoughts on UI: GIF demo of drag n drop
 Dan: Thoughts on UI: Make the customer facing menu UI first, then implement Drag n Drop on that 2014-03-09
 
 Dan: How to allow data editing? Edit in memory, than save to JSON or YAML 2014-03-10
+Dan: How to implement inline content editing? **`<div contenteditable="true">`**
