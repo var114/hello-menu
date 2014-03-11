@@ -10,7 +10,7 @@ var yaml = require('js-yaml');
 var fs = require('fs'); //file system access
 
 try {
-  var appData = yaml.safeLoad(fs.readFileSync('./data/data.yml', 'utf8'));
+  var appData = yaml.safeLoad(fs.readFileSync('./db.yml', 'utf8'));
   console.log(appData);
 } catch (e) {
   console.log(e);
