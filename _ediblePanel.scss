@@ -3,9 +3,10 @@
   font-family: monospace, helvetica;
   color: $base3;
   background: $base02;
-  // border-bottom: 5px solid $base3;
+  border-bottom: 5px dashed $base3;
   padding: 1em;
   margin: 0 0 0em 0;
+  position: relative;
   .button{
     font-weight: 800;
     color: $base3;
@@ -17,7 +18,11 @@
     }
   }
   .title {
-    text-align: center;
+    // text-align: right;
+    color: $base00;
+    position:absolute;
+    top: 1.6em;
+    right: 1em;
     // margin: 0;
   }
   .tool-bar {
@@ -27,6 +32,12 @@
       margin: 0.3em 0.5em;
     }
   }
+}
+.perspective {
+  // border-top: 5px solid $base3;
+  color: $base00;
+  margin: 0.5em 0 0 0;
+  text-align: center;
 }
 [data-edible] {
   display: inline-block;

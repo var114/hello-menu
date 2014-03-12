@@ -66,7 +66,8 @@ h1 {
   text-decoration: none;
   box-shadow: 0px 1px 0px 0px black; }
   .button:hover, .button:focus {
-    background: gray; }
+    color: #fdf6e3;
+    background: #cb4b16; }
 
 .alt-button {
   font-weight: 800;
@@ -115,8 +116,10 @@ h1 {
   font-family: monospace, helvetica;
   color: #fdf6e3;
   background: #073642;
+  border-bottom: 5px dashed #fdf6e3;
   padding: 1em;
-  margin: 0 0 0em 0; }
+  margin: 0 0 0em 0;
+  position: relative; }
   .ediblePanel .button, .ediblePanel .alt-button {
     font-weight: 800;
     color: #fdf6e3;
@@ -126,12 +129,20 @@ h1 {
       background: #cb4b16;
       cursor: pointer; }
   .ediblePanel .title {
-    text-align: center; }
+    color: #657b83;
+    position: absolute;
+    top: 1.6em;
+    right: 1em; }
   .ediblePanel .tool-bar {
     text-align: center; }
     .ediblePanel .tool-bar li {
       padding: 0.3em 0.8em;
       margin: 0.3em 0.5em; }
+
+.perspective {
+  color: #657b83;
+  margin: 0.5em 0 0 0;
+  text-align: center; }
 
 [data-edible] {
   display: inline-block;

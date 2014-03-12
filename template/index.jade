@@ -15,7 +15,10 @@ block content
           +spanEdible(branch, siteInfo)
         each menu in ['brunch', 'dinner', 'happy-hour', 'special']
           li: a(href="/pdf/cafe21-#{branch}-#{menu}.pdf" class=menu data-menu-link="true").button= menu
-          li: div(class=menu data-dropzone="cafe21-#{branch}-#{menu}.pdf" class="hidden").button= menu 
+          li: div(class=menu data-dropzone="cafe21-#{branch}-#{menu}.pdf" class="hidden").button
+            | upload
+            br
+            = menu
           
     
 
