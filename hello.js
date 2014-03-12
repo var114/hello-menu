@@ -16,16 +16,19 @@ try {
   console.log(e);
 }
 
+app.use(express.bodyParser());
+app.use(express.static(__dirname + '/public')); //server css, javascript from public folder
+
+
 app.set("views", __dirname + "/template");
 app.set("view engine", "jade");
 app.get('/', function (req, res) {
   res.render("index", appData);
 }); 
 
-app.use(express.bodyParser());
-app.use(express.static(__dirname + '/public')); //server css, javascript from public folder
 
 app.post('/', function (req, res) {
+  // console.log(req)
   console.log(req.body);
   console.log(req.files);
 
