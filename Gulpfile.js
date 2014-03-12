@@ -10,11 +10,12 @@ gulp.task('default', function () {
 
   app.listen(3000);
 
-  gulp.src('*.scss')
-    .pipe(watch())
-    .pipe(sass({errLogToConsole: true}))
-    .pipe(gulp.dest('./public/css'))
-    .pipe(livereload());
+  gulp.watch('*.scss').on('change', function (file) {
+    gulp.src('main.scss')
+      .pipe(sass({errLogToConsole: true}))
+      .pipe(gulp.dest('./public/css'))
+      .pipe(livereload());
+  })
 
   gulp.src('template/*.jade')
     .pipe(watch())

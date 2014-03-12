@@ -1,13 +1,129 @@
+/*------------------------------------*\
+    $RESET
+\*------------------------------------*/
+/* Border-Box http:/paulirish.com/2012/box-sizing-border-box-ftw/ */
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+html, body, div, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, ol, ul, li, form, legend, label, table, header, footer, nav, section, figure {
+  margin: 0;
+  padding: 0; }
+
+header, footer, nav, section, article, hgroup, figure {
+  display: block; }
+
+.ediblePanel {
+  font-size: 80%;
+  font-family: monospace, helvetica;
+  color: #fdf6e3;
+  background: #073642;
+  padding: 1em;
+  margin: 0 0 0em 0; }
+  .ediblePanel .button, .ediblePanel .alt-button {
+    font-weight: 800;
+    color: #fdf6e3;
+    background: #268bd2;
+    box-shadow: 0px 4px 0 0 black; }
+    .ediblePanel .button:hover {
+      background: #cb4b16;
+      cursor: pointer; }
+  .ediblePanel .title {
+    text-align: center; }
+  .ediblePanel .tool-bar {
+    text-align: center; }
+    .ediblePanel .tool-bar li {
+      padding: 0.3em 0.8em;
+      margin: 0.3em 0.5em; }
+
+.show-yourself {
+  outline: 4px solid #268bd2; }
+
 body {
-  font-family: helvetica;
-  font-size: 24px; }
+  font-family: Georgia;
+  font-size: 24px;
+  color: #002b36;
+  background: #fdf6e3;
+  line-height: 1.5em; }
+  @media screen and (max-width: 480px) {
+    body {
+      font-size: 16px; } }
+
+a {
+  color: #2aa198;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: 1px solid #2aa198; }
+
+p {
+  margin: 0.4em 0; }
+
+img {
+  display: block;
+  width: 100%; }
+
+.clear {
+  visibility: hidden;
+  clear: both; }
+
+.wrapper {
+  overflow-x: hidden; }
 
 h1 {
+  color: #fdf6e3;
+  background: #859900;
+  font-size: 1.5em;
+  margin: 0 0 1em 0;
+  padding: 1em 0;
   text-align: center; }
+
+.button, .alt-button {
+  display: inline-block;
+  font-family: inherit;
+  font-weight: 400;
+  font-size: inherit;
+  border: 1px solid black;
+  border-radius: 0.5em;
+  color: black;
+  padding: 1em 1.5em;
+  margin: 0.3em 0;
+  text-decoration: none;
+  box-shadow: 0px 1px 0px 0px black; }
+  .button:hover, .button:focus {
+    background: gray; }
+
+.alt-button {
+  font-weight: 800;
+  background: #2aa198; }
+  .alt-button:hover, .alt-button:focus {
+    background: gray; }
+
+.text-button {
+  display: inline-block;
+  font-weight: 400;
+  font-style: italic; }
+
+.pdf-downloads {
+  position: relative;
+  margin: 0.5em auto;
+  padding: 1em 5%;
+  width: 100%;
+  max-width: 720px; }
+
+.menu-list {
+  text-align: center;
+  width: 49%;
+  float: left;
+  list-style: none; }
+  .menu-list li {
+    line-height: 1.1em;
+    margin: 0.6em 0; }
+    .menu-list li .download {
+      font-size: 80%; }
 
 .dropzone {
   display: inline-block;
-  border: 5px dashed grey;
   padding: 1em;
   margin: 1em 0.5em; }
   .dropzone:hover {

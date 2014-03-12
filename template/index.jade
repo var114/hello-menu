@@ -2,41 +2,49 @@ include _dropzone
 
 extends layout
 
+mixin spanEdible(dataName, db)
+  span(data-edible=edible?'{"dataName": "#{dataName}", "db": "#{db.dbName}"}':null)&attributes(attributes)=db[dataName]
+
 block content
-  h1.data-title(contenteditable="true")= title
-  
-  //- p [GIF demonstration of process]
+  h1
+    +spanEdible("title", siteInfo)
+  .pdf-downloads
+    each branch in ['gaslamp', 'adams']
+      ul.menu-list
+        h2
+          +spanEdible(branch, siteInfo)
+        each menu in ['brunch', 'dinner', 'happy-hour', 'special']
+          li: a(href="/pdf/cafe21-#{branch}-#{menu}.pdf" class=menu).button
+            //- span.download download <br>
+            //- = branch
+            //- br
+            =menu 
+            //- br
+            //- | menu
+    
 
+  
   //- h2 Gaslamp Quarter
-  +makeDropzone("Gaslamp", "Brunch")
-  //- +makeDropzone("Gaslamp", "Dinner")
-  //- +makeDropzone("Gaslamp", "Happy Hour")
-  //- +makeDropzone("Gaslamp", "Special")
-  //- +makeDropzone("Adams", "Brunch")
-  //- +makeDropzone("Adams", "Dinner")
-  //- +makeDropzone("Adams", "Happy Hour")
-  //- +makeDropzone("Adams", "Special")
-  //- make
-
-  //- h2 University Heights
+  //- +makeDropzone("Gaslamp", "Brunch")
+  
   
 
-block script
-  // script(type="text/javascript").
-    //- var dropzone = new Dropzone("#gaslampBreakfast");
-  script(type="text/javascript").
-    var socket = io.connect('/');
-    socket.on('success', function (data) {
-      console.log(data);
-      })
+//- block script
+//-   // script(type="text/javascript").
+//-     //- var dropzone = new Dropzone("#gaslampBreakfast");
+//-   script(type="text/javascript").
+//-     var socket = io.connect('/');
+//-     socket.on('success', function (data) {
+//-       console.log(data);
+//-       })
 
-    $(".data-title").click(function () {
-        console.log("clicked");
-      });
-    $(".data-title").blur(function() {
-        var newData = $(".data-title").text();
-        console.log("edited " + newData);
-        socket.emit('edit', {'title': newData});
+//-     $(".data-title").click(function () {
+//-         console.log("clicked");
+//-       });
+//-     $(".data-title").blur(function() {
+//-         var newData = $(".data-title").text();
+//-         console.log("edited " + newData);
+//-         socket.emit('edit', {'title': newData});
 
-      });
+//-       });
  

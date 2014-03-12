@@ -8,11 +8,13 @@ html
     link(rel="stylesheet" href="/css/main.css")
   body
     .wrapper
+      include _ediblePanel
       block content
 
   script(type="text/javascript" src="/js/dropzone-3.8.4.js")
   script(type="text/javascript" src="/js/jquery-2.1.0.min.js")
   script(type="text/javascript" src="/socket.io/socket.io.js")
+  script(type="text/javascript" src="/js/edible.js")
   block script
   script(type="text/javascript").
     document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
