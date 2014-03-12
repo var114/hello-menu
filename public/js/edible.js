@@ -11,8 +11,8 @@ $('.show-edible').click(function () {
   $("[data-edible]").each(function (index) {
     $(this).toggleClass("show-yourself");
   })
-  $("[data-menu-link").toggleClass('hidden');
-  $("[data-dropzone").toggleClass('hidden');
+  $("[data-menu-link]").toggleClass('hidden');
+  $("[data-dropzone]").toggleClass('hidden');
   // $("[data-dropzone]")[0].dropzone();
   // $('#test').dropzone({url: '/'});  
 })
