@@ -31,7 +31,7 @@ app.use(express.static(__dirname + '/public')); //server css, javascript from pu
 app.post('/', function (req, res) {
   console.log('good job');
 });
-
+io.set('log level', 1);
 io.sockets.on('connection', function (socket) {
   console.log('connected');
   socket.emit('success', 'connected!');
