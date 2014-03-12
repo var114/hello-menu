@@ -1,7 +1,20 @@
+$("[data-dropzone]").each(function (index) {
+    var postUrl = $(this).data("dropzone");
+    $(this).dropzone({
+      url: postUrl,
+      createImageThumbnails: false
+    });
+  });
+
 $('.show-edible').click(function () {
+  $('.show-edible').toggleClass("hidden");
   $("[data-edible]").each(function (index) {
     $(this).toggleClass("show-yourself");
   })
+  $("[data-menu-link").toggleClass('hidden');
+  $("[data-dropzone").toggleClass('hidden');
+  // $("[data-dropzone]")[0].dropzone();
+  // $('#test').dropzone({url: '/'});  
 })
 
 var socket = io.connect('/');

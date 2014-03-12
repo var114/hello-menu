@@ -1,4 +1,3 @@
-var fs = require('fs');
 app.post('/file-upload', function(req, res) {
     // get the temporary location of the file
     var tmp_path = req.files.thumbnail.path;
@@ -13,4 +12,4 @@ app.post('/file-upload', function(req, res) {
             res.send('File uploaded to: ' + target_path + ' - ' + req.files.thumbnail.size + ' bytes');
         });
     });
-};
+});

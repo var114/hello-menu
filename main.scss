@@ -17,7 +17,6 @@ $blue:      #268bd2;
 $cyan:      #2aa198;
 $green:     #859900;
 
-@import "_ediblePanel.scss";
 
 body {
   font-family: Georgia;
@@ -50,6 +49,7 @@ img {
 .wrapper{
   overflow-x: hidden;
   // max-width: 320px;
+  margin-bottom: 5em;
 }
 h1 {
   color: $base3;
@@ -132,3 +132,4 @@ h1 {
 }
 
 
+@import "_ediblePanel.scss";

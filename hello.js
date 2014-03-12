@@ -1,6 +1,9 @@
 var jade = require('jade');
 var express = require('express');
 var editor = require('./editor');
+var fs = require('fs');
+
+// var uploader = require('./helloUploader');
 
 var app = express()
   , server = require('http').createServer(app) // for socket io to piggy-back on (don't ask me why...)
@@ -28,11 +31,33 @@ app.get('/', function (req, res) {
   res.render("index", {siteInfo: db.siteInfo, edible: true});
 }); 
 
-app.post('/', function (req, res) {
-  // console.log(req)
-  // console.log(req.body);
-  console.log(req.files);
+app.get('/pdf/:url', function (req, res) {
+  console.log('get ' + req.params.url)
+  var path = './data/' + req.params.url;
+  fs.exists(path, function (exists) {
+    if (exists) {
+      res.sendfile(path);
+    } else {
+      res.send(path + ' has not been uploaded yet!');
+    };
+  })
+  
+});
 
+app.post('/:url', function(req, res) {
+    // get the temporary location of the file
+    var tmp_path = req.files.file.path;
+    // set where the file should actually exists - in this case it is in the "images" directory
+    var target_path = './data/' + req.params.url;
+    // move the file from the temporary location to the intended location
+    fs.rename(tmp_path, target_path, function(err) {
+        if (err) throw err;
+        // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
+        fs.unlink(tmp_path, function() {
+            if (err) throw err;
+            res.send('File uploaded to: ' + target_path + ' - ' + req.files.file.size + ' bytes');
+        });
+    });
 });
 
 io.set('log level', 1);

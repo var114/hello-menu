@@ -14,13 +14,9 @@ block content
         h2
           +spanEdible(branch, siteInfo)
         each menu in ['brunch', 'dinner', 'happy-hour', 'special']
-          li: a(href="/pdf/cafe21-#{branch}-#{menu}.pdf" class=menu).button
-            //- span.download download <br>
-            //- = branch
-            //- br
-            =menu 
-            //- br
-            //- | menu
+          li: a(href="/pdf/cafe21-#{branch}-#{menu}.pdf" class=menu data-menu-link="true").button= menu
+          li: div(class=menu data-dropzone="cafe21-#{branch}-#{menu}.pdf" class="hidden").button= menu 
+          
     
 
   

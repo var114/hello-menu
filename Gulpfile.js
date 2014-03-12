@@ -17,7 +17,7 @@ gulp.task('default', function () {
       .pipe(livereload());
   })
 
-  gulp.src('template/*.jade')
+  gulp.src(['template/*.jade', 'public/js/*.js'])
     .pipe(watch())
     .pipe(livereload());
   // gulp.watch('*.jade').on('change', function(file) {
