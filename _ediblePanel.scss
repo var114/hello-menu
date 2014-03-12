@@ -28,6 +28,11 @@
     }
   }
 }
+[data-edible] {
+  display: inline-block;
+  min-height: 1em;
+  min-width: 0.5em;
+}
 .show-yourself {
   outline: 4px dashed $blue;
   &:hover { cursor: pointer;}
