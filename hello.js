@@ -18,19 +18,19 @@ try {
 
 app.set("views", __dirname + "/template");
 app.set("view engine", "jade");
-
-
 app.get('/', function (req, res) {
   res.render("index", appData);
 }); 
 
 app.use(express.bodyParser());
-
 app.use(express.static(__dirname + '/public')); //server css, javascript from public folder
 
 app.post('/', function (req, res) {
-  console.log('good job');
+  console.log(req.body);
+  console.log(req.files);
+
 });
+
 io.set('log level', 1);
 io.sockets.on('connection', function (socket) {
   console.log('connected');
