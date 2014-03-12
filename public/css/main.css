@@ -133,6 +133,11 @@ h1 {
       padding: 0.3em 0.8em;
       margin: 0.3em 0.5em; }
 
+[data-edible] {
+  display: inline-block;
+  min-height: 1em;
+  min-width: 0.5em; }
+
 .show-yourself {
   outline: 4px dashed #268bd2; }
   .show-yourself:hover {
