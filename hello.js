@@ -63,7 +63,11 @@ app.post('/:url', function(req, res) {
 io.set('log level', 1);
 
 function editData (dbName, dataKey, dataValue) {
-  db[dbName][dataKey] = dataValue;
+  if(dataValue.length > 0) {
+    db[dbName][dataKey] = dataValue;
+  } else {
+    db[dbName][dataKey] = 'click to edit';
+  }
 }
 
 io.sockets.on('connection', function (socket) {
