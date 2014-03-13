@@ -116,7 +116,7 @@ h1 {
   font-family: monospace, helvetica;
   color: #fdf6e3;
   background: #073642;
-  border-bottom: 5px dashed #fdf6e3;
+  border-bottom: 5px solid #fdf6e3;
   padding: 1em;
   margin: 0 0 0em 0;
   position: relative; }
