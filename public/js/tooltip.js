@@ -1,59 +1,78 @@
-// IIFE to ensure safe use of $
-(function( $ ) {
+//http://osvaldas.info/elegant-css-and-jquery-tooltip-responsive-mobile-friendly
 
-  // Create plugin
-  $.fn.tooltips = function(el) {
-
-    var $tooltip,
-      $body = $('body'),
-      $el;
-
-    // Ensure chaining works
-    return this.each(function(i, el) {
-
-      $el = $(el).attr("data-tooltip", i);
-
-      // Make DIV and append to page 
-      var $tooltip = $('<div class="tooltip" data-tooltip="' + i + '">' + $el.attr('href') + '<div class="arrow"></div></div>').appendTo("body");
-
-      // Position right away, so first appearance is smooth
-      var linkPosition = $el.position();
-
-      $tooltip.css({
-        top: linkPosition.top - $tooltip.outerHeight() - 13,
-        left: linkPosition.left - ($tooltip.width()/2)
-      });
-
-      $el
-      // Mouseenter
-      .click(function(event) {
-        console.log('clicked!');
-        event.preventDefault();
-
-        $el = $(this);
-
-        $tooltip = $('div[data-tooltip=' + $el.data('tooltip') + ']');
-        // $tooltip = $('div.tooltip');
-
-        // Reposition tooltip, in case of page movement e.g. screen resize                        
-        var linkPosition = $el.position();
-        console.log(linkPosition);
-        console.log($tooltip.outerHeight());
-
-        $tooltip.css({
-          // top: 200
-          top: linkPosition.top - $tooltip.outerHeight() + 300,
-          // left: linkPosition.left - ($tooltip.width()/2)
-        });
-
-        // Adding class handles animation through CSS
-        $tooltip.addClass("active");
-
-        // Mouseleave
-      });
-
-      });
-
-    }
-
-})(jQuery);
+$( function()
+{
+    var targets = $( '[data-menu-link]' ),
+        target  = false,
+        tooltip = false,
+        title   = false;
+ 
+    targets.bind( 'mouseenter', function()
+    {
+        target  = $( this );
+        tip     = target.attr( 'href' );
+        tooltip = $( '<div id="tooltip"></div>' );
+ 
+        if( !tip || tip == '' )
+            return false;
+ 
+        target.removeAttr( 'title' );
+        tooltip.css( 'opacity', 0 )
+               .html( tip )
+               .appendTo( 'body' );
+ 
+        var init_tooltip = function()
+        {
+            if( $( window ).width() < tooltip.outerWidth() * 1.5 )
+                tooltip.css( 'max-width', $( window ).width() / 2 );
+            else
+                tooltip.css( 'max-width', 340 );
+ 
+            var pos_left = target.offset().left + ( target.outerWidth() / 2 ) - ( tooltip.outerWidth() / 2 ),
+                pos_top  = target.offset().top - tooltip.outerHeight() - 20;
+ 
+            if( pos_left < 0 )
+            {
+                pos_left = target.offset().left + target.outerWidth() / 2 - 20;
+                tooltip.addClass( 'left' );
+            }
+            else
+                tooltip.removeClass( 'left' );
+ 
+            if( pos_left + tooltip.outerWidth() > $( window ).width() )
+            {
+                pos_left = target.offset().left - tooltip.outerWidth() + target.outerWidth() / 2 + 20;
+                tooltip.addClass( 'right' );
+            }
+            else
+                tooltip.removeClass( 'right' );
+ 
+            if( pos_top < 0 )
+            {
+                var pos_top  = target.offset().top + target.outerHeight();
+                tooltip.addClass( 'top' );
+            }
+            else
+                tooltip.removeClass( 'top' );
+ 
+            tooltip.css( { left: pos_left, top: pos_top } )
+                   .animate( { top: '+=10', opacity: 1 }, 50 );
+        };
+ 
+        init_tooltip();
+        $( window ).resize( init_tooltip );
+ 
+        var remove_tooltip = function()
+        {
+            tooltip.animate( { top: '-=10', opacity: 0 }, 50, function()
+            {
+                $( this ).remove();
+            });
+ 
+            target.attr( 'title', tip );
+        };
+ 
+        target.bind( 'mouseleave', remove_tooltip );
+        tooltip.bind( 'click', remove_tooltip );
+    });
+});

@@ -13,7 +13,7 @@ $('.show-edible').click(function () {
 
 })
 
-$('[data-menu-link]').tooltips();
+// $('[data-menu-link]').tooltips();
 
 
 var socket = io.connect('/');
