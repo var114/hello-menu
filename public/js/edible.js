@@ -36,17 +36,6 @@ $("[data-edible]").each(function (index) {
   });
 });
 
-
-// $("[data-visual-description-lower]").click(function () {
-//     console.log("clicked");
-//   });
-// $(".data-title").blur(function() {
-//     var newData = $(".data-title").html();
-//     console.log("edited " + newData);
-//     socket.emit('edit', {'title': newData});
-
-//   });
-
 function edibleUpdate(socket, dbName, dataKey, dataValue) {
   socket.emit('edit', {dbName: dbName, dataKey: dataKey, dataValue:dataValue})
 }

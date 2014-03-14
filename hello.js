@@ -81,9 +81,9 @@ io.sockets.on('connection', function (socket) {
 
 
 
-exports.listen = function (port) {
-  server.listen(3000, function () { console.log("Server listeing on port 3000")})
-};
+
+server.listen(4567, function () { console.log("Server listeing on port 4567")})
+
 
 
 
