@@ -1,18 +1,15 @@
 var jade = require('jade');
 var express = require('express');
+var app = express();
+
+/* Socket io */
+var server = require('http').createServer(app) // for socket io to piggy-back on (don't ask me why...)
+var io = require('socket.io').listen(server);
+
+/* Text database */
 var fs = require('fs');
-
-// var uploader = require('./helloUploader');
-
-var app = express()
-  , server = require('http').createServer(app) // for socket io to piggy-back on (don't ask me why...)
-  , io = require('socket.io').listen(server);
-
 var yaml = require('js-yaml');
-var fs = require('fs'); //file system access
-
 var db = {};
-
 try {
   db.siteInfo = yaml.safeLoad(fs.readFileSync('./db.yml', 'utf8'));
   console.log(db.siteInfo);
@@ -39,8 +36,7 @@ app.get('/pdf/:url', function (req, res) {
     } else {
       res.send(path + ' has not been uploaded yet!');
     };
-  })
-  
+  })  
 });
 
 app.post('/:url', function(req, res) {
@@ -59,8 +55,6 @@ app.post('/:url', function(req, res) {
     });
 });
 
-io.set('log level', 1);
-
 function editData (dbName, dataKey, dataValue) {
   if(dataValue.length > 0) {
     db[dbName][dataKey] = dataValue;
@@ -76,6 +70,7 @@ function saveDataToDisk (dbName, fileName) {
   });
 }
 
+io.set('log level', 1);
 io.sockets.on('connection', function (socket) {
   console.log('connected');
   socket.emit('success', 'connected!');
@@ -86,12 +81,8 @@ io.sockets.on('connection', function (socket) {
   })
 })
 
-
-
-
-
 server.listen(4567, function () { 
-  console.log("Server listeing on port 4567")
+  console.log("Server listeing on port 4567");
 });
 
 
