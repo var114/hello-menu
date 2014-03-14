@@ -53,26 +53,26 @@
     display: none !important;
   }
 
-.dz-details {
-  font-family: helvetica;
-  font-size: 50%;
-  line-height: 1.2em;
-}
-.dz-error-mark {
-  display: none;
-}
+// .dz-details {
+//   font-family: helvetica;
+//   font-size: 50%;
+//   line-height: 1.2em;
+// }
+// .dz-error-mark {
+//   display: none;
+// }
 [data-dropzone] {
   border: 3px dashed $blue;
   box-shadow: none;
 }
-.dz-progress {
-  height: 5px;
-  background: $red;
-}
-.dz-upload {
-  height: 5px;
-  background: $green;
-}
-.data-dz-uploadprogress{
+// .dz-progress {
+//   height: 5px;
+//   background: $red;
+// }
+// .dz-upload {
+//   height: 5px;
+//   background: $green;
+// }
+// .data-dz-uploadprogress{
 
-}
+// }

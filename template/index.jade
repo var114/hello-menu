@@ -6,25 +6,24 @@ mixin spanEdible(dataName, db)
   span(data-edible=edible?'{"dataName": "#{dataName}", "db": "#{db.dbName}"}':null)&attributes(attributes)=db[dataName]
 
 block content
-  h1
-    +spanEdible("title", siteInfo)
+  h1!= edibleHelper.edible("title", dbSiteInfo, edible)
   .pdf-downloads
+    //- +makeDropzone("Gaslamp", "Brunch")
     each branch in ['gaslamp', 'adams']
       ul.menu-list
-        h2
-          +spanEdible(branch, siteInfo)
+        h2!= edibleHelper.edible(branch, dbSiteInfo, edible)
         each menu in ['brunch', 'dinner', 'happy-hour', 'special']
           li: a(href="/pdf/cafe21-#{branch}-#{menu}.pdf" class=menu data-menu-link="true").button= menu
-          li: div(class=menu data-dropzone="cafe21-#{branch}-#{menu}.pdf" class="hidden").button
-            | upload
-            br
-            = menu
+          //- li: div(class=menu data-dropzone="cafe21-#{branch}-#{menu}.pdf" class="hidden dropzone").button
+          //-   | upload
+          //-   br
+          //-   = menu
           
     
 
   
   //- h2 Gaslamp Quarter
-  //- +makeDropzone("Gaslamp", "Brunch")
+  
   
   
 

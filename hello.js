@@ -6,6 +6,9 @@ var app = express();
 var server = require('http').createServer(app) // for socket io to piggy-back on (don't ask me why...)
 var io = require('socket.io').listen(server);
 
+/* edible Helper functions */
+var edibleHelper = require('./my_modules/edibleViewHelper');
+
 /* Text database */
 var fs = require('fs');
 var yaml = require('js-yaml');
@@ -24,7 +27,7 @@ app.set("views", __dirname + "/template");
 app.set("view engine", "jade");
 
 app.get('/', function (req, res) {
-  res.render("index", {siteInfo: db.siteInfo, edible: true});
+  res.render("index", {dbSiteInfo: db.siteInfo, edible: true, edibleHelper: edibleHelper});
 }); 
 
 app.get('/pdf/:url', function (req, res) {

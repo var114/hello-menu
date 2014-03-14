@@ -19,8 +19,9 @@ $green:     #859900;
 
 
 body {
-  font-family: Georgia;
-  // font-family: Helvetica;
+  position: relative;
+  // font-family: Georgia;
+  font-family: Helvetica;
   font-size: 24px;
   color: $base03;
   background: $base3;
@@ -116,7 +117,7 @@ h1 {
   // color: white;
   // background: $blue;
   display: inline-block;
-  // border: 5px dashed $gray;
+  border: 5px dashed gray;
   // border-radius: 0.8em;
   // box-shadow: 2px 2px 0 0 #555;
   padding: 1em;
@@ -134,3 +135,5 @@ h1 {
 
 
 @import "_ediblePanel.scss";
+@import "dropzone.scss";
+@import "tooltip.scss";
