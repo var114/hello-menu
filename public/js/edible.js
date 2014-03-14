@@ -13,7 +13,9 @@ $('.show-edible').click(function () {
 
 })
 
-// $('[data-menu-link]').tooltips();
+$('[data-menu-link]').click(function (event) {
+  event.preventDefault();
+});
 
 
 var socket = io.connect('/');
