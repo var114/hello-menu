@@ -1,6 +1,5 @@
 var jade = require('jade');
 var express = require('express');
-var editor = require('./editor');
 var fs = require('fs');
 
 // var uploader = require('./helloUploader');
@@ -66,8 +65,15 @@ function editData (dbName, dataKey, dataValue) {
   if(dataValue.length > 0) {
     db[dbName][dataKey] = dataValue;
   } else {
-    db[dbName][dataKey] = 'click to edit';
+    db[dbName][dataKey] = '>tap here<';
   }
+}
+
+function saveDataToDisk (dbName, fileName) {
+  var text = yaml.safeDump(db[dbName]);
+  fs.writeFile(fileName, text, function (err) {
+    console.log("saved " + fileName);
+  });
 }
 
 io.sockets.on('connection', function (socket) {
@@ -76,13 +82,17 @@ io.sockets.on('connection', function (socket) {
   socket.on('edit', function (data) {
     console.log(JSON.stringify(data));
     editData(data.dbName, data.dataKey, data.dataValue);
+    saveDataToDisk(data.dbName, "db.yml");
   })
 })
 
 
 
 
-server.listen(4567, function () { console.log("Server listeing on port 4567")})
+
+server.listen(4567, function () { 
+  console.log("Server listeing on port 4567")
+});
 
 
 
